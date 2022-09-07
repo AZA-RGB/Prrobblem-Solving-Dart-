@@ -1,19 +1,19 @@
 import 'dart:math';
 
 void main(List<String> args) {
-  List<int> nums=[-1,-23,-4,-65,4,6,-55,-4];
-  print(mxproduct(nums)) ;
-}
-
-int mxproduct(List<int> nums) {
-  var current_sum = 0;
-  var max_sum = 0;
-  max_sum = nums[0];
-  current_sum = max_sum;
-  for (int i = 1; i < nums.length; i++) {
-    current_sum = max(nums[i] + max_sum, nums[i]);
-    max_sum = max(current_sum, max_sum);
+  List<int> nums = [-1, 2, 4, -6, 4, -6, 5, 4];
+  print(maxProduct(nums));
+} 
+int maxProduct(List<int> nums) {
+  var ans = 1;
+  var prod = 1;
+  for (int i = 0; i < nums.length; i++) {
+    if (prod* nums[i] > 0) {
+      prod *= nums[i];
+    } else {
+      prod = 1;
+    }
+    ans = max(prod, ans);
   }
-
-  return max_sum;
+  return ans;
 }
